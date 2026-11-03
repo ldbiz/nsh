@@ -6,9 +6,9 @@ nsh is an AI-assisted terminal environment for Bash, Zsh, Fish and PowerShell. I
 Unlike a simple shell alias, nsh includes a PTY-wrapping shim, a shared daemon, persistent SQLite history, memory, provider integrations and tools capable of performing work.
 
 ## Stack and runtime
-- Rust 2024 workspace: main crate and `proto/` IPC crate; Tokio async runtime.
+- Rust 2024 workspace: main crate and `proto/` remote-message/framing crate; Tokio async runtime.
 - SQLite through rusqlite, HTTP streaming through reqwest, shell-specific integration scripts.
-- Separate `nsh` shim and `nsh-core` executable; optional iroh-based remote access (enabled by default).
+- Separate `nsh` shim and `nsh-core` executable; iroh support is a default Cargo feature, but remote access requires `remote.enabled = true` in configuration.
 - Optional mobile companion under `mobile/` (Tauri 2, TypeScript and xterm.js).
 
 The stable shim handles terminal wrapping and capture, while the core handles CLI operations, the global daemon, query orchestration, providers, memory and tools. Shell hooks report command completion and coordinate command prefill. The daemon maintains shared state and database access across terminal sessions.

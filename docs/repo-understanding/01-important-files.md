@@ -6,7 +6,7 @@ Only the principal architectural entry points and boundaries are listed.
 | File / directory | Role | Why it matters |
 |---|---|---|
 | `src/shim_main.rs` | Stable executable entry | Chooses wrapping versus delegation to the core |
-| `src/shim/` | PTY wrapper, capture and pumping | Explains how nsh observes terminal output without replacing the shell |
+| `src/shim/` | PTY wrapper, capture and pumping | Explains how nsh launches a child login shell on a PTY and observes its output |
 | `src/core_main.rs`, `src/app.rs`, `src/cli.rs` | Core command dispatch | Defines available operations and where they lead |
 | `shell/nsh.bash`, `shell/nsh.zsh`, `shell/nsh.fish`, `shell/nsh.ps1` | Shell integration | Records commands and manages shell-specific interaction |
 
@@ -15,7 +15,7 @@ Only the principal architectural entry points and boundaries are listed.
 |---|---|---|
 | `src/runtime/global_daemon.rs` | Global daemon lifecycle | Owns shared session state and background work |
 | `src/runtime/daemon.rs`, `src/runtime/daemon_client.rs` | IPC protocol and client | Connects shell/core requests to the daemon |
-| `proto/src/lib.rs` | Shim/core wire protocol | Important compatibility boundary |
+| `proto/src/lib.rs` | Remote message and framing protocol | Defines the mobile/iroh protocol; local daemon requests are in `src/runtime/daemon.rs` |
 | `src/query/mod.rs` | Query and tool loop | Main AI orchestration path |
 | `src/query/prompt.rs` | System prompt construction | Combines instructions with gathered context |
 | `src/tools/` | Tool implementations and runtime | Defines agent capabilities and side effects |

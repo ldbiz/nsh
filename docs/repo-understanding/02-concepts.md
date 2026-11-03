@@ -15,7 +15,7 @@
 | Persistent memory | Core, episodic, semantic, procedural, resource and encrypted knowledge stores | `src/memory/`, `src/db/memory_ops.rs` |
 | Memory ingestion | Converts shell events into durable, selected memories | `src/memory/ingestion/` |
 | Memory retrieval | Finds relevant stored context for subsequent queries | `src/memory/retrieval/` |
-| Risk assessment | Classifies command hazards and helps gate execution | `src/security.rs`, `src/tools/run_command.rs` |
+| Risk assessment | Classifies command hazards and helps gate execution | `src/security.rs`, `src/tools/command.rs`, `src/tools/run_command.rs` |
 | Tool result boundary | Marks external tool output as untrusted in model context | `src/security.rs`, `src/query/mod.rs` |
 | Remote session | Optional access to terminal sessions from another device | `src/runtime/remote.rs`, `mobile/` |
 

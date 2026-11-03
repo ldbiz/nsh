@@ -14,7 +14,7 @@ A natural-language query travels through the core's query handler. Context gathe
 - `nsh query` is the natural-language entry point, with thinking/private/JSON options.
 - `nsh record` and daemon-send operations support event recording.
 - `nsh chat`, history, session, memory, config and provider commands provide additional workflows.
-- `nsh mcp-server` exposes a restricted tool subset over stdio.
+- `nsh mcp-serve` (internal/hidden CLI command) exposes a restricted tool subset over stdio.
 - Remote functionality depends on the optional `remote` feature; this is enabled in default Cargo features.
 
 ## Runtime diagram

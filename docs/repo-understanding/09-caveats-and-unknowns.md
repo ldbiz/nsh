@@ -3,6 +3,8 @@
 This documentation is based on static inspection of the fork's `main` tree, not a running installation.
 
 ## Important boundaries to validate
+- **Bash private-query history:** `shell/nsh.bash` explicitly runs `history -s -- "?! $*"` even in its private-query wrapper. The core's private flag controls nsh conversation persistence, but do not assume `?!` prevents a query appearing in Bash history or being written to `HISTFILE`; check the live shell's history settings.
+- **Native Windows capture:** `src/pty_windows.rs` implements ConPTY support, but the current PowerShell init script deliberately skips automatic wrapping on native Windows. Do not assume feature parity with wrapped Unix shells.
 - **Shell coverage:** Bash, Zsh, Fish and PowerShell integrations differ. Do not infer exact behaviour in one shell from another shell's hook implementation.
 - **PTY versus hooks:** The shim captures terminal output; hooks report command metadata. Verify which capture mode and wrapper conditions apply in a given installation.
 - **Shim/core compatibility:** The code documents a deliberately stable wrapper boundary, but compatibility across arbitrary historical versions has not been tested here.
